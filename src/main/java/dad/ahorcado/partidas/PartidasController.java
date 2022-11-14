@@ -3,14 +3,10 @@ package dad.ahorcado.partidas;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
-import dad.ahorcado.palabras.PalabrasController;
-import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +29,10 @@ public class PartidasController implements Initializable {
 	static int contador = 8;
 	static int puntuacion=100;
 	
+	public static int getPuntuacion() {
+		return puntuacion;
+	}
+
 	@FXML
 	private ImageView ahorcadoImagen;
 
@@ -73,40 +73,50 @@ public class PartidasController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		palabraAdivinarlabel.setText(palabra.get());
-		palabraAdivinarlabel.textProperty().addListener((o,ov,nv)-> palabraSecreta(palabra.get()));
+	//	palabraAdivinarlabel.setText("-----");
+	//	palabraSecreta(palabra.get());
 		
+		palabraAdivinarlabel.textProperty().addListener((o,ov,nv)-> palabraSecreta(palabra.get()));
+		puntoLetraLabel.textProperty().addListener((o,ov,nv)-> getPuntuacion());
 	}
 
 	@FXML
 	void onLetra(ActionEvent event) throws FileNotFoundException {
 
+		if(!(textoLetratextField.getText().compareTo("")==0)) {
 		palabraSecreta(palabra.get());
+		logica.respuestaLetra(textoLetratextField.getText().charAt(0));
+		System.out.println(textoLetratextField.getText().charAt(0));
+		System.out.println(contador);
 		if(true) {}
 		else {}
 		resultImage();
-
+		}
 	}
 
+	
+	
 
 
 	
 	@FXML
 	void onResolver(ActionEvent event) {
 
+		System.out.println(textoLetratextField.getText());
+		
 //		System.out.println(palabra.get());
 		int resolver=palabra.get().compareToIgnoreCase((textoLetratextField.getText()));
-//		System.out.println(resolver);
+		if(!(textoLetratextField.getText().compareTo("")==0)) {
 		if(resolver==0) {
 			
 			System.out.println("es correcto");
-			
+			puntuacion=10;
 		}
 		else {
 			System.out.println(contador+=1);
 			resultImage();
 		}
-		
+		}
 	}
 
 	public void palabraSecreta(String llegada) {
@@ -185,7 +195,6 @@ public class PartidasController implements Initializable {
 		}
 		 default:
 			 	ahorcadoImagen.setImage(new Image("/images/1.png"));
-			    System.out.println("siendo default");
 		}
 	}
 	
@@ -203,5 +212,12 @@ public class PartidasController implements Initializable {
 		this.palabraProperty().set(palabra);
 	}
 	
+	public TextField getTextoLetratextField() {
+		return textoLetratextField;
+	}
+
+	public void setTextoLetratextField(String rellenar) {
+		textoLetratextField.textProperty().set(rellenar);
+	}
 
 }

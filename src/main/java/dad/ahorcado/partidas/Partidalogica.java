@@ -1,27 +1,32 @@
 package dad.ahorcado.partidas;
 
-public class Partidalogica {
+import java.lang.ModuleLayer.Controller;
 
-	PartidasController controller;
+public class Partidalogica {
+	Controller controller;
 	static int contador=1; 
-	String hola="hola";
 	
-	public int respuestaLetra(char letra) {
-		
-	
-		
-		if(hola=="hola") {
-			return contador;
+	public void respuestaLetra(char letra) {
+		CharSequence letraRecibida= letra+"";
+		if(controller.palabra.get().contains(letraRecibida)) {
+			controller.puntuacion+=1;
+//			revelarLetra(letra);
 		}
 		else {
-			return contador+=1;
+			 controller.contador+=1;
 		}
+		
+		controller.setTextoLetratextField(""); 
+		
 	}
 	
 	public void reset() {
 		controller.puntuacion=0;
 		controller.contador=1;
-		
+		controller.setTextoLetratextField(""); 
 	}
 	
+
+	
+//}
 }

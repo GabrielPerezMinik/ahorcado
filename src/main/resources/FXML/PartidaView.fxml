@@ -44,12 +44,15 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" BorderPane.alignment="CENTER_RIGHT">
+      <HBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER_RIGHT">
          <children>
             <TextField fx:id="textoLetratextField" alignment="CENTER" />
-            <Button fx:id="letraButton" alignment="CENTER" mnemonicParsing="false" onAction="#onLetra" text="Letra" />
+            <Button fx:id="letraButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#onLetra" text="Letra" />
             <Button fx:id="resolverButton" mnemonicParsing="false" onAction="#onResolver" text="resolver" />
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </HBox>
    </bottom>
 </BorderPane>

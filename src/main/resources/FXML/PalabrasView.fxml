@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="view" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="view" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <ListView fx:id="palabrasList" BorderPane.alignment="CENTER" />
    </center>
    <right>
       <VBox spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="nuevoButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onNuevoAction" text="Añadir" />
+            <Button fx:id="nuevoButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onNuevoPalabraAction" text="Añadir" />
             <Button fx:id="quitarButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onQuitarAction" text="Quitar" />
          </children>
          <padding>
