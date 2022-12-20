@@ -1,9 +1,9 @@
 package dad.ahorcado.partidas;
 
-import java.lang.ModuleLayer.Controller;
+
 
 public class Partidalogica {
-	Controller controller;
+	PartidasController controller;
 	static int contador=1; 
 	
 	public void respuestaLetra(char letra) {
